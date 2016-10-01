@@ -11,8 +11,9 @@ import java.util.Map;
 public class HttpRequest {
     private String Url;
     public String Method;
-    public Byte[] Content;
-    public Map<String, String> Headers;
+    public String Content;
+    public UrlParams Parameters;
+    public RequestHeaders Headers;
 
     public HttpRequest(String url){
         this.Url=url;
