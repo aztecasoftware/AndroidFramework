@@ -1,6 +1,8 @@
 package com.aztecasoftware.kernel.security;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.Date;
 import java.util.UUID;
@@ -10,12 +12,12 @@ import java.util.UUID;
  */
 
 public class SessionInfo {
-    public UUID SessionID;
-    public UsuarioInfo Usuario;
-    public String WorkStation;
-    public Date BusinessDate;
-    public Date LoginDate;
-    public Integer TimezoneOffset;
+    public UUID sessionID;
+    public UsuarioInfo user;
+    public String workStation;
+    public Date businessDate;
+    public Date loginDate;
+    public Integer timezoneOffset;
 
     public String toJSON(){
         Gson gson=new Gson();

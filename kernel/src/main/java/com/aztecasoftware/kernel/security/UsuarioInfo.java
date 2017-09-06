@@ -7,5 +7,5 @@ import com.aztecasoftware.kernel.business.CatalogInfo;
  */
 
 public class UsuarioInfo extends CatalogInfo {
-    public String Password;
+    public String password;
 }

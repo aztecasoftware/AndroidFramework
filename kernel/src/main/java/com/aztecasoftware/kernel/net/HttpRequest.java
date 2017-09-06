@@ -19,7 +19,7 @@ public class HttpRequest {
         this.Url=url;
     }
 
-    public URL GetUrl() throws MalformedURLException{
+    public URL getUrl() throws MalformedURLException{
         URL url = new URL(this.Url);
         return url;
     }

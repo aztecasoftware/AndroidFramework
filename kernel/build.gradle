@@ -9,12 +9,12 @@ gradle.projectsEvaluated {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.3"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 23
+        minSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,5 +41,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
     compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC3'
-    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.code.gson:gson:2.8.0'
 }

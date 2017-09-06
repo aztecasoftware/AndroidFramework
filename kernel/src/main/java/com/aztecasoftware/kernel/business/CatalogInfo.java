@@ -9,8 +9,8 @@ import com.google.gson.Gson;
  */
 
 public class CatalogInfo {
-    public int Identity;
-    public String Code;
+    public int identity;
+    public String code;
 
 
     public String toJSON(){

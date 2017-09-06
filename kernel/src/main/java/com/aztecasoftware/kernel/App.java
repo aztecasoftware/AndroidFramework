@@ -7,19 +7,19 @@ import com.aztecasoftware.kernel.security.SessionInfo;
  */
 
 public final class App {
-    private static SessionInfo Session;
-    private static String ApiBaseUrl="http://www.embotelladoraaga.com.mx:8095/frameworktest/api";
+    private static SessionInfo session;
+    private static String apiBaseUrl="http://www.embotelladoraaga.com.mx:9093/api";
 
     public static SessionInfo getSession(){
-        return Session;
+        return session;
     }
 
     public static void setSession(SessionInfo session){
-        Session=session;
+        session=session;
     }
 
     public static String getApiBaseUrl(){
-        return ApiBaseUrl;
+        return apiBaseUrl;
     }
 
 }

@@ -18,18 +18,18 @@ public class UsuarioService extends CatalogService<UsuarioInfo> {
     }
 
     @Override
-    public UsuarioInfo Create() {
+    public UsuarioInfo create() {
         return new UsuarioInfo();
     }
 
-    public Observable<SessionInfo> Login(String userName, String password, String workstation){
+    public Observable<SessionInfo> login(String userName, String password, String workstation){
         UrlParams Params=new UrlParams();
         Params.put("userName", userName);
         Params.put("password", password);
         Params.put("workstation", workstation);
 
-        return ApiService.Get("login", Params)
-                .map(response -> SessionInfo.fromJson(response.Content));
+        return apiService.get("login", Params)
+                .map(response -> SessionInfo.fromJson(response.content));
 
     }
 

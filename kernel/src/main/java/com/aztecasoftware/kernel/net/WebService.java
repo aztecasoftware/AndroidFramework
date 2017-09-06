@@ -21,13 +21,13 @@ public class WebService {
     public static final String WEB_METHOD_GET="GET";
     public static final String WEB_METHOD_POST="POST";
 
-    public String Url;
+    public String url;
 
     public WebService(String url) {
-        this.Url = url;
+        this.url = url;
     }
 
-    private String CreateQueryString(UrlParams params) throws UnsupportedEncodingException{
+    private String createQueryString(UrlParams params) throws UnsupportedEncodingException{
         StringBuffer queryString=new StringBuffer();
         if (params.size() > 0) {
             queryString.append("?");
@@ -41,33 +41,35 @@ public class WebService {
                 queryString.append(pair.getValue());
                 firstItem=false;
             }
-            return URLEncoder.encode(queryString.toString(), "UTF-8");
+            //return URLEncoder.encode(queryString.toString(), "UTF-8");
+            return queryString.toString();
         }
         else{
             return "";
         }
     }
 
-    private HttpRequest CreateRequest(String method, String action, UrlParams params) throws UnsupportedEncodingException {
-        String requestUrl = Url + "/" + action;
+    private HttpRequest createRequest(String method, String action, UrlParams params) throws UnsupportedEncodingException {
+        String requestUrl = url + "/" + action;
         String content="";
         if (method.equals(WEB_METHOD_GET)){
-            requestUrl += CreateQueryString(params);
+            requestUrl += createQueryString(params);
         }
         if (method.equals(WEB_METHOD_POST)){
             Gson gson=new Gson();
             content=gson.toJson(params);
         }
         HttpRequest request = new HttpRequest(requestUrl);
+        request.Method=method;
         request.Content=content;
         request.Parameters=params;
         return request;
     }
 
-    public Observable<HttpResponse> Get(String action, UrlParams params) {
+    public Observable<HttpResponse> get(String action, UrlParams params) {
         Observable<HttpResponse> observable=null;
         try {
-            HttpRequest request = CreateRequest(WEB_METHOD_GET, action, params);
+            HttpRequest request = createRequest(WEB_METHOD_GET, action, params);
 
             observable = Observable.create(new ObservableOnSubscribe<HttpResponse>() {
                 @Override
@@ -85,10 +87,10 @@ public class WebService {
         return observable;
     }
 
-    public Observable<HttpResponse> Post(String action, UrlParams params) {
+    public Observable<HttpResponse> post(String action, UrlParams params) {
         Observable<HttpResponse> observable=null;
         try {
-            HttpRequest request = CreateRequest(WEB_METHOD_POST, action, params);
+            HttpRequest request = createRequest(WEB_METHOD_POST, action, params);
 
             observable = Observable.create(new ObservableOnSubscribe<HttpResponse>() {
                 @Override

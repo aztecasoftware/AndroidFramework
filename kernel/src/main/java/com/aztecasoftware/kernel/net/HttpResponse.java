@@ -6,6 +6,6 @@ package com.aztecasoftware.kernel.net;
  */
 
 public class HttpResponse {
-    public String Content;
-    public int StatusCode;
+    public String content;
+    public int statusCode;
 }

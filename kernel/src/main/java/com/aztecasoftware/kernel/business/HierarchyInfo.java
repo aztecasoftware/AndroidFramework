@@ -5,5 +5,5 @@ package com.aztecasoftware.kernel.business;
  */
 
 public class HierarchyInfo {
-    public String Nombre;
+    public String nombre;
 }

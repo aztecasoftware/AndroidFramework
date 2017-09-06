@@ -10,17 +10,17 @@ import io.reactivex.Observable;
  */
 
 public interface ICatalogService<catalog extends CatalogInfo> {
-    catalog Create();
+    catalog create();
 
-    Observable<catalog> GetDetail(Integer itemID);
+    Observable<catalog> getDetail(Integer itemID);
 
-    Observable<catalog> GetDetail(Integer idBranch, String code);
+    Observable<catalog> getDetail(Integer idBranch, String code);
 
-    Observable<Boolean> Delete(Integer itemID);
+    Observable<Boolean> delete(Integer itemID);
 
-    Observable<Boolean> Exists(int itemID);
+    Observable<Boolean> exists(int itemID);
 
-    Observable<Boolean> ChangeStatus(Integer itemID, boolean active);
+    Observable<Boolean> changeStatus(Integer itemID, boolean active);
 
-    Observable<List<catalog>> Sync(Date lastUpdate);
+    Observable<List<catalog>> sync(Date lastUpdate);
 }

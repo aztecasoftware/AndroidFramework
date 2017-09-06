@@ -17,62 +17,62 @@ import io.reactivex.Observable;
  */
 
 public abstract class CatalogService<catalog extends CatalogInfo> implements ICatalogService<catalog> {
-    protected WebService ApiService;
-    private Class<catalog> CatalogClass;
+    protected WebService apiService;
+    private Class<catalog> catalogClass;
 
     public CatalogService(String serviceUrl){
-        this.ApiService=new WebService(App.getApiBaseUrl() + "/" + serviceUrl);
+        this.apiService=new WebService(App.getApiBaseUrl() + "/" + serviceUrl);
     }
 
     private catalog fromJson(String json){
         Gson gson=new Gson();
-        catalog Info=gson.fromJson(json, CatalogClass);
+        catalog Info=gson.fromJson(json, catalogClass);
         return Info;
     }
 
     @Override
-    public abstract catalog Create();
+    public abstract catalog create();
 
     @Override
-    public Observable<catalog> GetDetail(Integer itemID) {
+    public Observable<catalog> getDetail(Integer itemID) {
         UrlParams Params=new UrlParams();
-        Params.put("sessionID", App.getSession().SessionID.toString());
+        Params.put("sessionID", App.getSession().sessionID.toString());
         Params.put("itemID", itemID.toString());
         Params.put("checkStatus", "false");
 
-        return ApiService.Get("GetDetailByID", Params)
-                .map(response -> fromJson(response.Content));
+        return apiService.get("GetDetailByID", Params)
+                .map(response -> fromJson(response.content));
     }
 
     @Override
-    public Observable<catalog> GetDetail(Integer idBranch, String code) {
+    public Observable<catalog> getDetail(Integer idBranch, String code) {
         UrlParams Params=new UrlParams();
-        Params.put("sessionID", App.getSession().SessionID.toString());
+        Params.put("sessionID", App.getSession().sessionID.toString());
         Params.put("idBranch", idBranch.toString());
         Params.put("code", code);
 
-        return ApiService.Get("GetDetailByID", Params)
-                .map(response -> fromJson(response.Content));
+        return apiService.get("GetDetailByID", Params)
+                .map(response -> fromJson(response.content));
 
     }
 
     @Override
-    public Observable<Boolean> Delete(Integer itemID) {
+    public Observable<Boolean> delete(Integer itemID) {
         return null;
     }
 
     @Override
-    public Observable<Boolean> Exists(int itemID) {
+    public Observable<Boolean> exists(int itemID) {
         return null;
     }
 
     @Override
-    public Observable<Boolean> ChangeStatus(Integer itemID, boolean active) {
+    public Observable<Boolean> changeStatus(Integer itemID, boolean active) {
         return null;
     }
 
     @Override
-    public Observable<List<catalog>> Sync(Date lastUpdate) {
+    public Observable<List<catalog>> sync(Date lastUpdate) {
         return null;
     }
 }

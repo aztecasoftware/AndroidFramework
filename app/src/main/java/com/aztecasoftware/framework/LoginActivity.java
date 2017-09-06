@@ -24,21 +24,11 @@ public class LoginActivity extends Activity {
         @Override
         public void onClick(View v) {
             progressDialog=ProgressDialog.show(LoginActivity.this, "Trabajando", "Iniciando sesión", true, true);
-            usuarioSvc.Login(txtUser.getText().toString(), txtPassword.getText().toString(), "Mobile")
-                    .subscribe(
-                            new Consumer<SessionInfo>() {
-                                   @Override
-                                   public void accept(SessionInfo sessionInfo) throws Exception {
-
-                                       progressDialog.cancel();
-                                   }
-                               },
-                            new Consumer<Throwable>() {
-                                @Override
-                                public void accept(Throwable throwable) throws Exception {
-                                    progressDialog.cancel();
-                                }
-                            });
+            usuarioSvc.login(txtUser.getText().toString(), txtPassword.getText().toString(), "mobile")
+                    .subscribe(sessionInfo -> {
+                                progressDialog.cancel();
+                            },
+                            throwable -> progressDialog.cancel());
         }
     };
 
