@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Framework</string>
+    <string name="title_activity_select_company">Seleccionar compañia</string>
+    <string name="user_name">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
 </resources>
