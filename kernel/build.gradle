@@ -10,8 +10,6 @@ gradle.projectsEvaluated {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.3'
-
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 25
@@ -34,12 +32,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC3'
-    compile 'com.google.code.gson:gson:2.8.0'
+    testImplementation 'junit:junit:4.12'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
+    api 'io.reactivex.rxjava2:rxjava:2.0.0-RC3'
+    api 'com.google.code.gson:gson:2.8.0'
 }
